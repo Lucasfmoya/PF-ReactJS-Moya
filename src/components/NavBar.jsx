@@ -4,8 +4,6 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { Brand } from "./Brand";
 import { CartWidget } from "./CartWidget";
 
@@ -13,17 +11,17 @@ export const NavBar = () => {
   return (
     <Navbar expand="lg" bg="dark" data-bs-theme="dark">
       <Container fluid>
-        <Row>
-          <Col>
-            <Navbar.Brand className="" href="#home">
-              <Brand />
-            </Navbar.Brand>
-          </Col>
-          <Col>
-            <div className="d-flex justify-content-center">
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
+        <Container fluid>
+          <div className="row">
+            <div className="col-lg-2">
+              <Navbar.Brand className="" href="#home">
+                <Brand />
+              </Navbar.Brand>
+            </div>
+            <div className="col-lg-10">
+              <Navbar.Toggle aria-co ntrols="basic-navbar-nav" />
+              <Navbar.Collapse className="minav" id="basic-navbar-nav">
+                <Nav className="me-auto ">
                   <Nav.Link href="#home">Inicio</Nav.Link>
                   <Nav.Link href="#link">Nosotros</Nav.Link>
                   <Nav.Link href="#home">Productos</Nav.Link>
@@ -45,12 +43,12 @@ export const NavBar = () => {
                     />
                     <Button variant="outline-success">Search</Button>
                   </Form>
+                  <CartWidget />
                 </Nav>
-                <CartWidget />
               </Navbar.Collapse>
             </div>
-          </Col>
-        </Row>
+          </div>
+        </Container>
       </Container>
     </Navbar>
   );
