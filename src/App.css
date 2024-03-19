@@ -1,3 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 .logo-menu {
   height: 150px;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
 }
