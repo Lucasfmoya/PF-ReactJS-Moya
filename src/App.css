@@ -11,3 +11,7 @@
 .navbar-collapse {
   flex-grow: 0;
 }
+a .nav-link {
+  font: #00adb5 !important;
+}
+
