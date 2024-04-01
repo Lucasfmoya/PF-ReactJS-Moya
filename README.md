@@ -1,3 +1,7 @@
+Proyecto Ecommerce de React 
+![PreEntrega2-Moya](https://github.com/Lucasfmoya/PreEntrega2-Moya/assets/133725925/eaae43a2-5921-4533-b88a-3801639d3263)
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
