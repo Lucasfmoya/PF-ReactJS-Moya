@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
 }
 
 .logo-menu {
@@ -15,3 +16,11 @@ a .nav-link {
   font: #00adb5 !important;
 }
 
+.div-img {
+  max-height: 400px;
+}
+
+.page-not-found{
+
+  width: 100vh;
+}
