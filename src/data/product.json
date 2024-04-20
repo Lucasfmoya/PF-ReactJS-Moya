@@ -5,7 +5,8 @@
     "description": "Galaxy S23U 512GB Green",
     "category": "Celulares",
     "pictureUrl": "https://images.fravega.com/f300/d6c41ae5537ce16aa7c6823a4c0611ff.jpg.webp",
-    "price": "$2.629.999"
+    "price": "$2.629.999",
+    "stock" : 2
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "description": "Celular Samsung Galaxy S23 Fe 6.4 Blanco 6gb Ram 128gb",
     "category": "Celulares",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/175768-532-540?v=638457758428330000&width=532&height=540&aspect=true",
-    "price": "$1.164.999"
+    "price": "$1.164.999",
+    "stock" : 3
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "description": "Samsung Galaxy Fit3 Dark Gray 1.6' Bt R390",
     "category": "Smartwatch",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/175818-800-800?v=638460152005930000&width=800&height=800&aspect=true",
-    "price": "$114.999"
+    "price": "$114.999",
+    "stock" : 10
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "description": "Celular Samsung Galaxy Z FOLD 5 Black 12/512GB 7.6''",
     "category": "Celulares",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/172515-532-540?v=638273776897400000&width=532&height=540&aspect=true",
-    "price": "$3.649.999"
+    "price": "$3.649.999",
+    "stock" : 2
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "description": "Smart TV Samsung 50 QN90C NEO QLED 4K HDR BT HDMI USB",
     "category": "Tv",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/173818-532-540?v=638306392524030000&width=532&height=540&aspect=true",
-    "price": "$1.999.999"
+    "price": "$1.999.999",
+    "stock" : 6
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "description": "Smart Tv Samsung 75 Bu8000 Crystal Uhd Hdr Bt",
     "category": "Tv",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/169672-532-540?v=638247656178630000&width=532&height=540&aspect=true",
-    "price": "$1.749.999"
+    "price": "$1.749.999",
+    "stock" : 1
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "description": "Torre de audio aiwa 8500W BT RGB",
     "category": "Audio",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/170827-532-540?v=638255516650100000&width=532&height=540&aspect=true",
-    "price": "$399.999"
+    "price": "$399.999",
+    "stock" : 8
   },
   {
     "id": 8,
@@ -61,7 +68,8 @@
     "description": "Parlante Flip 6 Sumergible Cl/Vs Jbl",
     "category": "Audio",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/171204-800-800?v=638258085327600000&width=800&height=800&aspect=true",
-    "price": "$259.999"
+    "price": "$259.999",
+    "stock" : 12
   },
   {
     "id": 9,
@@ -69,7 +77,8 @@
     "description": "Celular Samsung Galaxy A24 Lte Black 6/128Gb 6.5'",
     "category": "Celulares",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/171064-532-540?v=638258048177970000&width=532&height=540&aspect=true",
-    "price": "$389.599"
+    "price": "$389.599",
+    "stock" : 5
   },
   {
     "id": 10,
@@ -77,7 +86,8 @@
     "description": "Celular Samsung Galaxy A54 5G Graphite 8/256Gb 6.4'",
     "category": "Celulares",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/167753-532-540?v=638239950928800000&width=532&height=540&aspect=true",
-    "price": "$959.999"
+    "price": "$959.999",
+    "stock" : 4
   },
   {
     "id": 11,
@@ -85,7 +95,8 @@
     "description": "Smartwatch Samsung GALAXY WATCH5 40mm. Silver/Lila",
     "category": "Smartwatch",
     "pictureUrl": "https://naldoar.vtexassets.com/arquivos/ids/172697-800-800?v=638277937756930000&width=800&height=800&aspect=true",
-    "price": "$959.999"
+    "price": "$959.999",
+    "stock" : 6
   },
   {
     "id": 12,
@@ -93,6 +104,7 @@
     "description": "Samsung Galaxy A34 5G 128GB",
     "category": "Celulares",
     "pictureUrl": "https://tienda.personal.com.ar/images/720/webp/Samsung_Galaxy_A34_5_G_Awesome_Silver_20529fbdac.png",
-    "price": "$599.999"
+    "price": "$599.999",
+    "stock" : 4
   }
 ]

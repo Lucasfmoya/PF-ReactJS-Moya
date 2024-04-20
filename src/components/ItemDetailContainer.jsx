@@ -4,12 +4,22 @@ import Container from "react-bootstrap/Container";
 import data from "../data/product.json";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
+import { ItemCount } from "./ItemCount";
 
 export const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
 
   const { id } = useParams();
+
+  const [cantidad, setCantidad] = useState(1);
+
+  const handleRestar = () => {
+    cantidad > 1 && setCantidad(cantidad - 1);
+  };
+
+  const handleSumar = () => {
+    item.stock > cantidad && setCantidad(cantidad + 1);
+  };
 
   useEffect(() => {
     const get = new Promise((resolve, reject) => {
@@ -40,7 +50,17 @@ export const ItemDetailContainer = () => {
             <Card.Text>
               <b>{item.price}</b>
             </Card.Text>
-            <Button variant="primary">Comprar</Button>
+            <Card.Text>
+              <span>
+                Disponible: <b>{item.stock}</b>
+              </span>
+            </Card.Text>
+            <ItemCount
+              cantidad={cantidad}
+              handleRestar={handleRestar}
+              handleSumar={handleSumar}
+            />
+            <Button variant="primary">Agregar al carrito</Button>
           </Card.Body>
         </div>
       </Card>
