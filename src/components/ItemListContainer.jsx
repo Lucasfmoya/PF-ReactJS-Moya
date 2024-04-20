@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import data from "../data/product.json";
 import { ItemList } from "./ItemList";
+import { Formu } from "./Formu";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -20,10 +21,15 @@ export const ItemListContainer = () => {
   }, [id]);
 
   return (
-    <Container>
-      <div className="d-flex flex-wrap justify-content-around">
-        <ItemList items={items} />
+    <>
+      <div className="form-buy">
+        <Formu />
       </div>
-    </Container>
+      <Container>
+        <div className="d-flex flex-wrap justify-content-around">
+          <ItemList items={items} />
+        </div>
+      </Container>
+    </>
   );
 };

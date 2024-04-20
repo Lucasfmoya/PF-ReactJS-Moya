@@ -5,6 +5,7 @@ import data from "../data/product.json";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
+
 export const ItemDetailContainer = () => {
   const [item, setItem] = useState(null);
 
