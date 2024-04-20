@@ -21,7 +21,7 @@ export const NavBar = () => {
             <Nav.Link className="" to="/" as={NavLink}>
               Inicio
             </Nav.Link>
-            <Nav.Link href="#link">Contacto</Nav.Link>
+            <Nav.Link to="/contacto" as={NavLink}>Contacto</Nav.Link>
             <Nav.Link href="#home">Nosotros</Nav.Link>
             <Nav.Link href="#link">Soporte</Nav.Link>
             <NavDropdown title="Productos" id="basic-nav-dropdown">

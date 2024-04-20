@@ -29,3 +29,8 @@ a .nav-link {
   width: 400px;
   border: 1px solid;
 }
+
+.error {
+  font-size: 1rem;
+  color: red;
+}
