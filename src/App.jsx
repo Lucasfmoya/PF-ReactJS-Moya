@@ -7,9 +7,14 @@ import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { PageNotFound } from "./components/PageNotFound";
 import { CartContext } from "./context/CartContext";
 import { MyForm } from "./components/MyForm";
+import { useState } from "react";
 function App() {
+
+  const [carrito, setCarrito] = useState([]);
+  
   return (
-    <CartContext.Provider value={""}>
+    <CartContext.Provider value={{ carrito, setCarrito }}>
+
       <BrowserRouter>
         <NavBar />
         <Routes>

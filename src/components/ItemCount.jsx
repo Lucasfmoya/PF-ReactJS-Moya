@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 
-export const ItemCount = ({cantidad, handleRestar, handleSumar}) => {
+export const ItemCount = ({ cantidad, handleRestar, handleSumar }) => {
   return (
     <div className="d-flex mt-2 mb-3 justify-content-between w-25 item-count">
       <Button

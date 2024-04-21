@@ -1,26 +1,50 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import data from "../data/product.json";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { ItemCount } from "./ItemCount";
+import { CartContext } from "../context/CartContext";
 
 export const ItemDetailContainer = () => {
+  const { carrito, setCarrito } = useContext(CartContext);
+  console.log(carrito);
+
   const [item, setItem] = useState(null);
 
   const { id } = useParams();
 
   const [cantidad, setCantidad] = useState(1);
 
-  const handleRestar = () => {
-    cantidad > 1 && setCantidad(cantidad - 1);
-  };
-
   const handleSumar = () => {
     item.stock > cantidad && setCantidad(cantidad + 1);
   };
 
+
+
+
+
+  const handleAgregar = () => {
+    const itemAgregado = { ...item, cantidad };
+    const nuevoCarrito = [...carrito];
+    const enCarrito = nuevoCarrito.find((item) => item.id === itemAgregado.id);
+
+    if (enCarrito) {
+      enCarrito.cantidad= enCarrito.cantidad + cantidad;
+      setCarrito(nuevoCarrito);
+    } else {
+      setCarrito([...carrito, itemAgregado]);
+    }
+  };
+
+
+
+
+
+  const handleRestar = () => {
+    cantidad > 1 && setCantidad(cantidad - 1);
+  };
   useEffect(() => {
     const get = new Promise((resolve, reject) => {
       setTimeout(() => resolve(data), 2000);
@@ -60,7 +84,9 @@ export const ItemDetailContainer = () => {
               handleRestar={handleRestar}
               handleSumar={handleSumar}
             />
-            <Button variant="primary">Agregar al carrito</Button>
+            <Button variant="primary" onClick={handleAgregar}>
+              Agregar al carrito
+            </Button>
           </Card.Body>
         </div>
       </Card>
