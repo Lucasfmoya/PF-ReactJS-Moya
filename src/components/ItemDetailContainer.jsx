@@ -8,8 +8,7 @@ import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
 
 export const ItemDetailContainer = () => {
-  const { carrito, setCarrito } = useContext(CartContext);
-  console.log(carrito);
+  const { carrito, agregarAlCarrito } = useContext(CartContext);
 
   const [item, setItem] = useState(null);
 
@@ -20,27 +19,6 @@ export const ItemDetailContainer = () => {
   const handleSumar = () => {
     item.stock > cantidad && setCantidad(cantidad + 1);
   };
-
-
-
-
-
-  const handleAgregar = () => {
-    const itemAgregado = { ...item, cantidad };
-    const nuevoCarrito = [...carrito];
-    const enCarrito = nuevoCarrito.find((item) => item.id === itemAgregado.id);
-
-    if (enCarrito) {
-      enCarrito.cantidad= enCarrito.cantidad + cantidad;
-      setCarrito(nuevoCarrito);
-    } else {
-      setCarrito([...carrito, itemAgregado]);
-    }
-  };
-
-
-
-
 
   const handleRestar = () => {
     cantidad > 1 && setCantidad(cantidad - 1);
@@ -72,7 +50,7 @@ export const ItemDetailContainer = () => {
             <Card.Title>{item.name}</Card.Title>
             <Card.Text>{item.description}</Card.Text>
             <Card.Text>
-              <b>{item.price}</b>
+              <b>${item.price}</b>
             </Card.Text>
             <Card.Text>
               <span>
@@ -84,7 +62,12 @@ export const ItemDetailContainer = () => {
               handleRestar={handleRestar}
               handleSumar={handleSumar}
             />
-            <Button variant="primary" onClick={handleAgregar}>
+            <Button
+              variant="primary"
+              onClick={() => {
+                agregarAlCarrito(item, cantidad);
+              }}
+            >
               Agregar al carrito
             </Button>
           </Card.Body>

@@ -1,13 +1,21 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 export const CartWidget = () => {
+  const { cantidadEnCarrito } = useContext(CartContext);
+  const mostrarCarrito = cantidadEnCarrito() > 0;
+
   return (
-      <button type="button" className="btn btn-primary position-relative">
+    mostrarCarrito && (
+      <Link to="/carrito">
         <FontAwesomeIcon icon={faCartShopping} />
-        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-          1
+        <span className="translate-middle badge rounded-pill bg-danger">
+          {cantidadEnCarrito()}
         </span>
-      </button>
+      </Link>
+    )
   );
 };
