@@ -9,22 +9,15 @@ import { CartContext } from "./context/CartContext";
 import { MyForm } from "./components/MyForm";
 import { useState } from "react";
 import { Cart } from "./components/Cart";
+import { agregarAlCarrito } from "./helpers/agregarAlCarrito";
 
 function App() {
-  const [carrito, setCarrito] = useState([]);
-
-  const agregarAlCarrito = (item, cantidad) => {
-    const itemAgregado = { ...item, cantidad };
-    const nuevoCarrito = [...carrito];
-    const enCarritoIndex = nuevoCarrito.findIndex((item) => item.id === itemAgregado.id);
-
-    if (enCarritoIndex !== -1) {
-      nuevoCarrito[enCarritoIndex].cantidad += cantidad;
-    } else {
-      nuevoCarrito.push(itemAgregado);
-    }
-    setCarrito(nuevoCarrito);
+  
+  const handleAgregarAlCarrito = (item, cantidad) => {
+    agregarAlCarrito(item, cantidad, carrito, setCarrito); 
   };
+
+  const [carrito, setCarrito] = useState([]);
 
   const cantidadEnCarrito = () => {
     return carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
@@ -33,7 +26,7 @@ function App() {
   const mostrarCarrito = cantidadEnCarrito() > 0;
 
   return (
-    <CartContext.Provider value={{ carrito, agregarAlCarrito, cantidadEnCarrito }}>
+    <CartContext.Provider value={{ carrito, handleAgregarAlCarrito, cantidadEnCarrito }}>
       <BrowserRouter>
         <NavBar />
         <Routes>

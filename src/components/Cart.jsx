@@ -1,11 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Container from "react-bootstrap/esm/Container";
 import { CartContext } from "../context/CartContext";
 import Table from "react-bootstrap/Table";
 
 export const Cart = () => {
   const { carrito } = useContext(CartContext);
-  const total = carrito.reduce((acc, prod) => acc + (prod.cantidad * prod.price), 0);
+  const [total, setTotal] = useState(0);
+  
+  useEffect(() => {
+    const newTotal = carrito.reduce((acc, prod) => acc + (prod.cantidad * prod.price), 0);
+    setTotal(newTotal);
+  }, [carrito]);
+  
   return (
     <Container>
       <h1>Carrito</h1>
@@ -29,10 +35,9 @@ export const Cart = () => {
                     <b className="me-4">{prod.description}</b>
                   </td>
                   <td>
-                    <img className="ms-4 img-table" src={prod.pictureUrl}></img>
+                    <img className="ms-4 img-table" src={prod.pictureUrl} alt={prod.description}></img>
                   </td>
                   <td>{prod.cantidad}</td>
-
                   <td>${prod.cantidad * prod.price}</td>
                 </tr>
               ))}

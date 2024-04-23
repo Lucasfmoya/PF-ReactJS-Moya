@@ -8,7 +8,7 @@ import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
 
 export const ItemDetailContainer = () => {
-  const { carrito, agregarAlCarrito } = useContext(CartContext);
+  const { handleAgregarAlCarrito } = useContext(CartContext);
 
   const [item, setItem] = useState(null);
 
@@ -65,7 +65,7 @@ export const ItemDetailContainer = () => {
             <Button
               variant="primary"
               onClick={() => {
-                agregarAlCarrito(item, cantidad);
+                handleAgregarAlCarrito(item, cantidad);
               }}
             >
               Agregar al carrito
