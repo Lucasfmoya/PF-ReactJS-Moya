@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
+import { handleRestar } from "../helpers/handleRestar";
+import { handleSumar } from "../helpers/handleSumar";
 
 export const ItemDetailContainer = () => {
   const { handleAgregarAlCarrito } = useContext(CartContext);
@@ -16,13 +18,6 @@ export const ItemDetailContainer = () => {
 
   const [cantidad, setCantidad] = useState(1);
 
-  const handleSumar = () => {
-    item.stock > cantidad && setCantidad(cantidad + 1);
-  };
-
-  const handleRestar = () => {
-    cantidad > 1 && setCantidad(cantidad - 1);
-  };
   useEffect(() => {
     const get = new Promise((resolve, reject) => {
       setTimeout(() => resolve(data), 2000);
@@ -59,8 +54,8 @@ export const ItemDetailContainer = () => {
             </Card.Text>
             <ItemCount
               cantidad={cantidad}
-              handleRestar={handleRestar}
-              handleSumar={handleSumar}
+              handleRestar={() => handleRestar(cantidad, setCantidad)}
+              handleSumar={() => handleSumar(cantidad, setCantidad, item)}
             />
             <Button
               variant="primary"
