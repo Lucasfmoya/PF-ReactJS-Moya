@@ -17,8 +17,8 @@ function App() {
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/contacto" element={<MyForm />} />
-          <Route path="/carrito" element={<Cart />} /> {/* Elimina la prop mostrarCarrito */}
-          <Route path="/category/:id" element={<ItemListContainer />} />
+          <Route path="/carrito" element={<Cart />} />
+          <Route path="/category/:category" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

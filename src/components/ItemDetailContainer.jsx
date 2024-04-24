@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import data from "../data/product.json";
 import Button from "react-bootstrap/Button";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase/config";
 import Card from "react-bootstrap/Card";
 import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
@@ -18,25 +19,22 @@ export const ItemDetailContainer = () => {
     handleRestar,
   } = useContext(CartContext);
 
-  const { id } = useParams();
+  const id = useParams().id;
 
-  const [loading, setLoading] = useState(true);
+//const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setCantidad(1);
-    const get = new Promise((resolve, reject) => {
-      setTimeout(() => resolve(data), 2000);
-    });
-    get.then((data) => {
-      const dataFound = data.find((d) => d.id === Number(id));
-      setItem(dataFound);
-      setLoading(false);
-    });
-  }, [id]);
-  if (loading) {
+    const docRef = doc(db, "productos", id);
+    getDoc(docRef).then((res)=>{
+     setItem({...res.data(), id: res.id})
+    })
+  },[]);
+  /* if (loading) {
     return <p>Cargando...</p>;
   }
-  if (!item) return null;
+  if (!item) return null; */
+  
   return (
     <Container className="d-flex justify-content-center">
       <Card className="mt-5" style={{ width: "52rem" }}>
