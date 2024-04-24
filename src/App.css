@@ -42,3 +42,8 @@ a .nav-link {
 .link-blanco{
   color: white;
 }
+
+.img-load {
+  width: 100%;
+  height: auto;
+}

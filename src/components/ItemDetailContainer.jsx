@@ -7,6 +7,7 @@ import { db } from "../firebase/config";
 import Card from "react-bootstrap/Card";
 import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
+import { Loading } from "./Loading";
 
 export const ItemDetailContainer = () => {
   const {
@@ -31,50 +32,53 @@ export const ItemDetailContainer = () => {
       setLoading(false);
     });
   }, []);
-  if (loading) {
-    return <p>Cargando...</p>;
-  }
 
   if (!item) return null;
   return (
-    <Container className="d-flex justify-content-center">
-      <Card className="mt-5" style={{ width: "52rem" }}>
-        <div className="d-flex">
-          <div>
-            <Card.Img
-              className="div-img img-fluid"
-              variant="top"
-              src={item.pictureUrl}
-            />
-          </div>
-          <Card.Body className="">
-            <Card.Text>{item.category}</Card.Text>
-            <Card.Title>{item.name}</Card.Title>
-            <Card.Text>{item.description}</Card.Text>
-            <Card.Text>
-              <b>${item.price}</b>
-            </Card.Text>
-            <Card.Text>
-              <span>
-                Disponible: <b>{item.stock}</b>
-              </span>
-            </Card.Text>
-            <ItemCount
-              cantidad={cantidad}
-              handleRestar={() => handleRestar(cantidad, setCantidad, item)}
-              handleSumar={() => handleSumar(cantidad, setCantidad, item)}
-            />
-            <Button
-              variant="primary"
-              onClick={() => {
-                handleAgregarAlCarrito(item, cantidad);
-              }}
-            >
-              Agregar al carrito
-            </Button>
-          </Card.Body>
-        </div>
-      </Card>
-    </Container>
+    <>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Container className="d-flex justify-content-center">
+          <Card className="mt-5" style={{ width: "52rem" }}>
+            <div className="d-flex">
+              <div>
+                <Card.Img
+                  className="div-img img-fluid"
+                  variant="top"
+                  src={item.pictureUrl}
+                />
+              </div>
+              <Card.Body className="">
+                <Card.Text>{item.category}</Card.Text>
+                <Card.Title>{item.name}</Card.Title>
+                <Card.Text>{item.description}</Card.Text>
+                <Card.Text>
+                  <b>${item.price}</b>
+                </Card.Text>
+                <Card.Text>
+                  <span>
+                    Disponible: <b>{item.stock}</b>
+                  </span>
+                </Card.Text>
+                <ItemCount
+                  cantidad={cantidad}
+                  handleRestar={() => handleRestar(cantidad, setCantidad, item)}
+                  handleSumar={() => handleSumar(cantidad, setCantidad, item)}
+                />
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    handleAgregarAlCarrito(item, cantidad);
+                  }}
+                >
+                  Agregar al carrito
+                </Button>
+              </Card.Body>
+            </div>
+          </Card>
+        </Container>
+      )}
+    </>
   );
 };
