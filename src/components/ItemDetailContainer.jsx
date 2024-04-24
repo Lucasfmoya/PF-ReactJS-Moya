@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
@@ -19,20 +19,22 @@ export const ItemDetailContainer = () => {
     handleRestar,
   } = useContext(CartContext);
 
-  const id = useParams().id;
+  const [loading, setLoading] = useState(true);
 
-//const [loading, setLoading] = useState(true);
+  const id = useParams().id;
 
   useEffect(() => {
     setCantidad(1);
     const docRef = doc(db, "productos", id);
-    getDoc(docRef).then((res)=>{
-     setItem({...res.data(), id: res.id})
-    })
-  },[]);
-  /* if (loading) {
+    getDoc(docRef).then((res) => {
+      setItem({ ...res.data(), id: res.id });
+      setLoading(false);
+    });
+  }, []);
+  if (loading) {
     return <p>Cargando...</p>;
-  }*/
+  }
+
   if (!item) return null;
   return (
     <Container className="d-flex justify-content-center">

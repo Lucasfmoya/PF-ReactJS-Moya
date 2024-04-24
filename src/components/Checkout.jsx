@@ -1,11 +1,12 @@
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-
+import { CartContext } from "../context/CartContext";
 
 export const Checkout = () => {
+  const { carrito, cantidad, vaciarCarrito } = useContext(CartContext);
   const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState("");
 
@@ -19,6 +20,9 @@ export const Checkout = () => {
     }
   };
 
+  const handleVaciarCarrito = () => {
+    vaciarCarrito();
+  };
   return (
     <Container>
       <h1 className="mt-4">Ya casi es tuyo!</h1>
@@ -72,7 +76,11 @@ export const Checkout = () => {
               {...register("comentarios")}
             />
           </Form.Group>
-          <Button type="submit" variant="outline-primary">
+          <Button
+            type="submit"
+            variant="outline-primary"
+            onClick={handleVaciarCarrito}
+          >
             Comprar
           </Button>
         </Form>
