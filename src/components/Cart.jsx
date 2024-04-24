@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import { CartContext } from "../context/CartContext";
 import Table from "react-bootstrap/Table";
@@ -76,6 +77,9 @@ export const Cart = () => {
             <h3>Total ${total}</h3>
             <Button onClick={handleVaciar} className="btn btn-danger">
               Eliminar carrito
+            </Button>
+            <Button className="btn btn-primary">
+              <Link to="/checkout" className="link-blanco">Finalizar compra</Link>
             </Button>
           </div>
         </div>

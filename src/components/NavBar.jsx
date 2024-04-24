@@ -21,7 +21,7 @@ export const NavBar = () => {
             <Nav.Link to="/" as={NavLink}>
               Inicio
             </Nav.Link>
-            <Nav.Link to="/contacto" as={NavLink}>
+            <Nav.Link href="#contacto">
               Contacto
             </Nav.Link>
             <Nav.Link href="#home">Nosotros</Nav.Link>
