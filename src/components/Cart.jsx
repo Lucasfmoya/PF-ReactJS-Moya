@@ -3,10 +3,24 @@ import Container from "react-bootstrap/esm/Container";
 import { CartContext } from "../context/CartContext";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import { ItemCount } from "./ItemCount";
 
 export const Cart = () => {
-  const { carrito, handleRestar, handleSumar } = useContext(CartContext);
+  const {
+    cantidad,
+    setCantidad,
+    item,
+    carrito,
+    handleRestar,
+    handleSumar,
+    vaciarCarrito,
+  } = useContext(CartContext);
+
   const [total, setTotal] = useState(0);
+
+  const handleVaciar = () => {
+    vaciarCarrito();
+  };
 
   useEffect(() => {
     const newTotal = carrito.reduce(
@@ -15,7 +29,6 @@ export const Cart = () => {
     );
     setTotal(newTotal);
   }, [carrito]);
-
   return (
     <Container>
       <h1>Carrito</h1>
@@ -46,21 +59,15 @@ export const Cart = () => {
                     ></img>
                   </td>
                   <td>
-                    <Button
-                      className="btn boton-restar"
-                      variant="outline-danger"
-                      onClick={handleRestar}
-                    >
-                      -
-                    </Button>
-                    <span>{prod.cantidad}</span>
-                    <Button
-                      className="btn boton-sumar"
-                      variant="outline-success"
-                      onClick={handleSumar}
-                    >
-                      +
-                    </Button>
+                    <ItemCount
+                      cantidad={cantidad}
+                      handleRestar={() =>
+                        handleRestar(cantidad, setCantidad, item)
+                      }
+                      handleSumar={() =>
+                        handleSumar(cantidad, setCantidad, item)
+                      }
+                    />
                   </td>
                   <td>${prod.cantidad * prod.price}</td>
                 </tr>
@@ -69,6 +76,9 @@ export const Cart = () => {
           </Table>
           <div>
             <h3>Total ${total}</h3>
+            <Button onClick={handleVaciar} className="btn btn-danger">
+              Eliminar carrito
+            </Button>
           </div>
         </div>
       ) : (

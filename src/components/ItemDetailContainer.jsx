@@ -6,28 +6,36 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { ItemCount } from "./ItemCount";
 import { CartContext } from "../context/CartContext";
-import { handleRestar } from "../helpers/handleRestar";
-import { handleSumar } from "../helpers/handleSumar";
 
 export const ItemDetailContainer = () => {
-  const { handleAgregarAlCarrito } = useContext(CartContext);
-
-  const [item, setItem] = useState(null);
+  const {
+    item,
+    setItem,
+    cantidad,
+    setCantidad,
+    handleAgregarAlCarrito,
+    handleSumar,
+    handleRestar,
+  } = useContext(CartContext);
 
   const { id } = useParams();
 
-  const [cantidad, setCantidad] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setCantidad(1);
     const get = new Promise((resolve, reject) => {
       setTimeout(() => resolve(data), 2000);
     });
     get.then((data) => {
       const dataFound = data.find((d) => d.id === Number(id));
       setItem(dataFound);
+      setLoading(false);
     });
   }, [id]);
-
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
   if (!item) return null;
   return (
     <Container className="d-flex justify-content-center">
@@ -54,7 +62,7 @@ export const ItemDetailContainer = () => {
             </Card.Text>
             <ItemCount
               cantidad={cantidad}
-              handleRestar={() => handleRestar(cantidad, setCantidad)}
+              handleRestar={() => handleRestar(cantidad, setCantidad, item)}
               handleSumar={() => handleSumar(cantidad, setCantidad, item)}
             />
             <Button

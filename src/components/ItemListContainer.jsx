@@ -9,6 +9,8 @@ export const ItemListContainer = () => {
 
   const { id } = useParams();
 
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const get = new Promise((resolve, reject) => {
       setTimeout(() => resolve(data), 2000);
@@ -16,9 +18,12 @@ export const ItemListContainer = () => {
     get.then((data) => {
       const filteredData = id ? data.filter((d) => d.category === id) : data;
       setItems(filteredData);
+      setLoading(false);
     });
   }, [id]);
-
+  if (loading) {
+    return <p>Cargando...</p>;
+  }
   return (
     <Container>
       <div className="d-flex flex-wrap justify-content-around">

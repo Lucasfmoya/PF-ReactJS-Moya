@@ -13,8 +13,22 @@ import { agregarAlCarrito } from "./helpers/agregarAlCarrito";
 
 function App() {
   
+  const [cantidad, setCantidad] = useState(1);
+
+  const [item, setItem] = useState(null);
+
+  const handleSumar = (cantidad, setCantidad, item) => {
+    if (item && item.stock > cantidad) {
+      setCantidad(cantidad + 1);
+    }
+  };
+
+  const handleRestar = (cantidad, setCantidad) => {
+    cantidad > 1 && setCantidad(cantidad - 1);
+  };
+
   const handleAgregarAlCarrito = (item, cantidad) => {
-    agregarAlCarrito(item, cantidad, carrito, setCarrito); 
+    agregarAlCarrito(item, cantidad, carrito, setCarrito);
   };
 
   const [carrito, setCarrito] = useState([]);
@@ -25,14 +39,38 @@ function App() {
 
   const mostrarCarrito = cantidadEnCarrito() > 0;
 
+  const vaciarCarrito = () => {
+    if (setCarrito) {
+      setCarrito([]);
+    } else {
+      return null;
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ carrito, handleAgregarAlCarrito, cantidadEnCarrito }}>
+    <CartContext.Provider
+      value={{
+        item,
+        setItem,
+        cantidad,
+        setCantidad,
+        carrito,
+        handleSumar,
+        handleRestar,
+        handleAgregarAlCarrito,
+        cantidadEnCarrito,
+        vaciarCarrito,
+      }}
+    >
       <BrowserRouter>
         <NavBar />
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/contacto" element={<MyForm />} />
-          <Route path="/carrito" element={<Cart mostrarCarrito={mostrarCarrito} />} />
+          <Route
+            path="/carrito"
+            element={<Cart mostrarCarrito={mostrarCarrito} />}
+          />
           <Route path="/category/:id" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
           <Route path="*" element={<PageNotFound />} />
