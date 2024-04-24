@@ -32,9 +32,8 @@ export const ItemDetailContainer = () => {
   },[]);
   /* if (loading) {
     return <p>Cargando...</p>;
-  }
-  if (!item) return null; */
-  
+  }*/
+  if (!item) return null;
   return (
     <Container className="d-flex justify-content-center">
       <Card className="mt-5" style={{ width: "52rem" }}>

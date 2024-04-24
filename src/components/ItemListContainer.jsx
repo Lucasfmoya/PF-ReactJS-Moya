@@ -8,9 +8,8 @@ import { db } from "../firebase/config";
 
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
-
-  //const { id } = useParams();
-const category = useParams().category;
+  const { category } = useParams();
+//const category = useParams().category;
   //const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,10 +21,10 @@ const category = useParams().category;
       setItems(
         res.docs.map((doc) => {
           return { ...doc.data(), id: doc.id };
-        })
+        })  
       );
     })
-  },[]);
+  },[category]);
 
   /* useEffect(() => {
     const get = new Promise((resolve, reject) => {
@@ -40,7 +39,6 @@ const category = useParams().category;
   /*  if (loading) {
     return <p>Cargando...</p>;
   } */
-  console.log(category);
   return (
     <Container>
       <div className="d-flex flex-wrap justify-content-around">

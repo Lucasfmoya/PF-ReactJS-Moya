@@ -37,7 +37,6 @@ export const Cart = () => {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Id</th>
                 <th>Detalle</th>
                 <th>Producto</th>
                 <th>Cantidad</th>
@@ -47,7 +46,6 @@ export const Cart = () => {
             <tbody>
               {carrito.map((prod) => (
                 <tr key={prod.id}>
-                  <td>{prod.id}</td>
                   <td>
                     <b className="me-4">{prod.description}</b>
                   </td>
