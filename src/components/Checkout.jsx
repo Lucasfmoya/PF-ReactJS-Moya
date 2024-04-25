@@ -9,10 +9,10 @@ export const Checkout = () => {
   const { carrito, vaciarCarrito, total } = useContext(CartContext);
   const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState("");
-  const { comprarCarrito, setComprarCarrito } = useState(carrito);
+  const [comprarCarrito, setComprarCarrito] = useState(carrito);
 
   useEffect(() => {
-    setComprarCarrito(carrito);
+    setComprarCarrito({...carrito});
   }, [carrito]);
 
   const comprar = (data) => {
