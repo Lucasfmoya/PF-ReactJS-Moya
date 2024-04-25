@@ -21,9 +21,7 @@ export const NavBar = () => {
             <Nav.Link to="/" as={NavLink}>
               Inicio
             </Nav.Link>
-            <Nav.Link href="#contacto">
-              Contacto
-            </Nav.Link>
+            <Nav.Link href="#contacto">Contacto</Nav.Link>
             <Nav.Link href="#home">Nosotros</Nav.Link>
             <Nav.Link href="#link">Soporte</Nav.Link>
             <NavDropdown title="Productos" id="basic-nav-dropdown">
@@ -47,11 +45,11 @@ export const NavBar = () => {
                 className="me-2"
                 aria-label="Search"
               />
-              <Button variant="outline-success">Buscar</Button>
+              <Button className="color-logo btn-buscar">Buscar</Button>
             </Form>
           </Nav>
+          <CartWidget />
         </Navbar.Collapse>
-        <CartWidget />
       </Container>
     </Navbar>
   );

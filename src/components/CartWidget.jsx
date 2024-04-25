@@ -10,12 +10,16 @@ export const CartWidget = () => {
 
   return (
     mostrarCarrito && (
-      <Link to="/carrito">
-        <FontAwesomeIcon icon={faCartShopping} />
-        <span className="translate-middle badge rounded-pill bg-danger">
-          {cantidadEnCarrito()}
-        </span>
-      </Link>
+      <>
+        <div className="icon-carrito mx-4">
+          <Link to="/carrito" >
+            <FontAwesomeIcon icon={faCartShopping} />
+            <span className="translate-middle badge rounded-pill bg-danger">
+              {cantidadEnCarrito()}
+            </span>
+          </Link>
+        </div>
+      </>
     )
   );
 };
