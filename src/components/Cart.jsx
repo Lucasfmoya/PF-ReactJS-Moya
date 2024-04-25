@@ -14,10 +14,10 @@ export const Cart = () => {
     carrito,
     handleRestar,
     handleSumar,
+    total,
+    setTotal,
     vaciarCarrito,
   } = useContext(CartContext);
-
-  const [total, setTotal] = useState(0);
 
   const handleVaciar = () => {
     vaciarCarrito();
@@ -30,6 +30,7 @@ export const Cart = () => {
     );
     setTotal(newTotal);
   }, [carrito]);
+
   return (
     <Container>
       <h1>Carrito</h1>
@@ -79,7 +80,9 @@ export const Cart = () => {
               Eliminar carrito
             </Button>
             <Button className="btn btn-primary">
-              <Link to="/checkout" className="link-blanco">Finalizar compra</Link>
+              <Link to="/checkout" className="link-blanco">
+                Finalizar compra
+              </Link>
             </Button>
           </div>
         </div>

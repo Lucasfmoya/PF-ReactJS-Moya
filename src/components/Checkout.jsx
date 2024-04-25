@@ -1,16 +1,28 @@
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CartContext } from "../context/CartContext";
 
 export const Checkout = () => {
-  const { carrito, cantidad, vaciarCarrito } = useContext(CartContext);
+  const { carrito, vaciarCarrito, total } = useContext(CartContext);
   const { register, handleSubmit, reset } = useForm();
   const [error, setError] = useState("");
+  const { comprarCarrito, setComprarCarrito } = useState(carrito);
+
+  useEffect(() => {
+    setComprarCarrito(carrito);
+  }, [carrito]);
 
   const comprar = (data) => {
+    const pedido = {
+      cliente: data,
+      productos: comprarCarrito,
+      total: total,
+    };
+    console.log(pedido);
+
     if (data.email === data.emailRepeat) {
       alert(`Gracias por su compra ${data.nombre}`);
       setError("");
@@ -23,6 +35,7 @@ export const Checkout = () => {
   const handleVaciarCarrito = () => {
     vaciarCarrito();
   };
+
   return (
     <Container>
       <h1 className="mt-4">Ya casi es tuyo!</h1>

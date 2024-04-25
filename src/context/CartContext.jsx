@@ -7,6 +7,7 @@ export const CartProvider = ({ children }) => {
   const [cantidad, setCantidad] = useState(1);
   const [item, setItem] = useState(null);
   const carritoLocalStorage = JSON.parse(localStorage.getItem("carrito")) || [];
+  const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState(carritoLocalStorage);
 
   const handleSumar = (cantidad, setCantidad, item) => {
@@ -52,6 +53,8 @@ export const CartProvider = ({ children }) => {
         mostrarCarrito,
         handleSumar,
         handleRestar,
+        total,
+        setTotal,
         handleAgregarAlCarrito,
         cantidadEnCarrito,
         vaciarCarrito,
