@@ -70,11 +70,11 @@ export const Cart = () => {
               ))}
             </tbody>
           </Table>
-          <div>
-            <h3>Total ${total}</h3>
+          <div className="d-flex justify-content-center ">
             <Button onClick={handleVaciar} className="btn btn-danger">
               Eliminar carrito
             </Button>
+            <h3 className="mx-4">Total $ {total}</h3>
             <Button className="btn btn-primary">
               <Link to="/checkout" className="link-blanco">
                 Finalizar compra

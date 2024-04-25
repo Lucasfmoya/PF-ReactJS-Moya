@@ -68,7 +68,7 @@ export const ItemDetailContainer = () => {
                   handleSumar={() => handleSumar(cantidad, setCantidad, item)}
                 />
                 <Button
-                  variant="primary"
+                  variant="outline-primary"
                   onClick={() => {
                     handleAgregarAlCarrito(item, cantidad);
                   }}
