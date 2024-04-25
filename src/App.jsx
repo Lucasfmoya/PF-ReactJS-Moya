@@ -6,7 +6,7 @@ import { ItemListContainer } from "./components/ItemListContainer";
 import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { PageNotFound } from "./components/PageNotFound";
 import { Cart } from "./components/Cart";
-import { CartProvider } from "./context/CartContext"; // Importa CartProvider
+import { CartProvider } from "./context/CartContext";
 import { Checkout } from "./components/Checkout";
 
 function App() {

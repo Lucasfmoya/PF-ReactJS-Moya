@@ -39,6 +39,7 @@ export const ItemDetailContainer = () => {
       {loading ? (
         <Loading />
       ) : (
+        <>
         <Container className="d-flex justify-content-center">
           <Card className="mt-5" style={{ width: "52rem" }}>
             <div className="d-flex">
@@ -78,6 +79,7 @@ export const ItemDetailContainer = () => {
             </div>
           </Card>
         </Container>
+        </>
       )}
     </>
   );
