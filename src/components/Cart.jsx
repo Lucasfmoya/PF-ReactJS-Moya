@@ -60,13 +60,9 @@ export const Cart = () => {
                   </td>
                   <td>
                     <ItemCount
-                      cantidad={cantidad}
-                      handleRestar={() =>
-                        handleRestar(cantidad, setCantidad, item)
-                      }
-                      handleSumar={() =>
-                        handleSumar(cantidad, setCantidad, item)
-                      }
+                      cantidad={prod.cantidad}
+                      handleRestar={() => handleRestar(prod.id)}
+                      handleSumar={() => handleSumar(prod.id)}
                     />
                   </td>
                   <td>${prod.cantidad * prod.price}</td>

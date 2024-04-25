@@ -9,15 +9,34 @@ export const CartProvider = ({ children }) => {
   const carritoLocalStorage = JSON.parse(localStorage.getItem("carrito")) || [];
   const [total, setTotal] = useState(0);
   const [carrito, setCarrito] = useState(carritoLocalStorage);
+  const [stockDisponible, setStockDisponible] = useState({});
 
-  const handleSumar = (cantidad, setCantidad, item) => {
-    if (item && item.stock > cantidad) {
-      setCantidad(cantidad + 1);
-    }
+  useEffect(() => {
+    const stock = {};
+    carrito.forEach((prod) => {
+      stock[prod.id] = prod.stock;
+    });
+    setStockDisponible(stock);
+  }, [carrito]);
+
+  const handleSumar = (id) => {
+    setCarrito((prevCarrito) =>
+      prevCarrito.map((prod) =>
+        prod.id === id && prod.stock >= prod.cantidad + 1
+          ? { ...prod, cantidad: prod.cantidad + 1 }
+          : prod
+      )
+    );
   };
-
-  const handleRestar = (cantidad, setCantidad) => {
-    cantidad > 1 && setCantidad(cantidad - 1);
+  
+  const handleRestar = (id) => {
+    setCarrito((prevCarrito) =>
+      prevCarrito.map((prod) =>
+        prod.id === id && prod.cantidad > 1
+          ? { ...prod, cantidad: prod.cantidad - 1 }
+          : prod
+      )
+    );
   };
 
   const handleAgregarAlCarrito = (item, cantidad) => {
