@@ -7,17 +7,8 @@ import Button from "react-bootstrap/Button";
 import { ItemCount } from "./ItemCount";
 
 export const Cart = () => {
-  const {
-    cantidad,
-    setCantidad,
-    item,
-    carrito,
-    handleRestar,
-    handleSumar,
-    total,
-    setTotal,
-    vaciarCarrito,
-  } = useContext(CartContext);
+  const { carrito, handleRestar, handleSumar, total, setTotal, vaciarCarrito } =
+    useContext(CartContext);
 
   const handleVaciar = () => {
     vaciarCarrito();
