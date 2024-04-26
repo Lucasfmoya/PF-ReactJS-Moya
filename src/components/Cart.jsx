@@ -22,6 +22,7 @@ export const Cart = () => {
     setTotal(newTotal);
   }, [carrito]);
 
+  console.log(carrito);
   return (
     <Container>
       <h1>Carrito</h1>
@@ -32,7 +33,7 @@ export const Cart = () => {
               <tr>
                 <th>Detalle</th>
                 <th>Producto</th>
-                <th>quantity</th>
+                <th>Cantidad</th>
                 <th>Subtotal</th>
               </tr>
             </thead>

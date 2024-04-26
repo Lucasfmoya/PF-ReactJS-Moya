@@ -4,7 +4,7 @@ import Card from "react-bootstrap/Card";
 export const Item = ({ item }) => {
   return (
     <>
-      <Card className="mx-2 mt-2 mb-4" style={{ width: "18rem" }}>
+      <Card className="mx-2 mt-2 mb-4" style={{ width: "14rem" }}>
         <Link to={`/item/${item.id}`}>
           <Card.Img className="img-fluid" variant="top" src={item.pictureUrl} />
         </Link>

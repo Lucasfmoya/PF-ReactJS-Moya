@@ -4,6 +4,9 @@ import { CartContext } from "../context/CartContext";
 
 export const ItemCount = ({ quantity, handleRestar, handleSumar }) => {
   const { item } = useContext(CartContext);
+
+  if (!item) return null;
+  
   return (
     <div className="d-flex mt-2 mb-3 justify-content-between w-25 item-count">
       <Button

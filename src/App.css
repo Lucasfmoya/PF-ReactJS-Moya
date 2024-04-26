@@ -5,32 +5,48 @@
   text-decoration: none !important;
 }
 
-.logo-menu {
-  height: 150px;
-}
-
+/* Navbar */
 .navbar-collapse {
   flex-grow: 0;
 }
-.color-logo {
-  color: #00adb5;
-}
-.color-nav {
-  color: #212529;
-}
-p.color-nav {
-  font-size: 1.5rem;
-  font-weight: 600;
+
+/* Tamaño de imagenes  */
+.logo-menu {
+  height: 150px;
 }
 
 .div-img {
   max-height: 400px;
 }
 
-.page-not-found {
-  width: 100vh;
+.img-table {
+  width: 48px;
+}
+/* Loader */
+.spinner {
+  width: 100%;
+  height: 200px;
 }
 
+/* Colores */
+.color-logo {
+  color: #00adb5;
+}
+
+.color-nav {
+  color: #212529;
+}
+
+p.color-nav {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.link-blanco {
+  color: white;
+}
+
+/* Estilos aplicados en el formulario */
 .form-buy {
   padding: 10px;
   margin: 20px;
@@ -45,23 +61,7 @@ textarea {
   color: red;
 }
 
-.img-table {
-  width: 48px;
-}
-.link-blanco {
-  color: white;
-}
-
-.img-load {
-  width: 100%;
-  height: auto;
-}
-
-.spinner {
-  width: 100%;
-  height: 200px;
-}
-
+/* Botones */
 .btn-buscar {
   background-color: transparent;
   border-color: #00adb5;
@@ -72,6 +72,15 @@ textarea {
     border-color: transparent;
   }
 }
+
+.link-hover {
+  color: #212529;
+  &:hover {
+    color: white;
+  }
+}
+
+/* Media queries */
 
 @media (max-width: 767px) {
   .icon-carrito {

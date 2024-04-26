@@ -8,6 +8,7 @@ import { TituloCarrito } from "./TituloCarrito";
 import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
+import { AgregarProd } from "../helpers/AgregarProd";
 
 export const Checkout = () => {
   const { carrito, vaciarCarrito, total } = useContext(CartContext);
@@ -23,20 +24,22 @@ export const Checkout = () => {
     const { nombre, telefono, email } = data;
 
     const productosPedido = carrito.map(
-      ({ id, description, price, quantity }) => ({
+      ({ id, description, name, price, quantity, stock }) => ({
         id,
+        name,
         description,
         price,
         quantity,
+        stock,
         fecha: new Date().toString(),
       })
     );
+
     const order = {
       buyer: { nombre, telefono, email },
       productos: { ...productosPedido, estado: "generada" },
       total: total,
     };
-
     const pedidosRef = collection(db, "orders");
 
     addDoc(pedidosRef, order).then((doc) => {
@@ -55,7 +58,7 @@ export const Checkout = () => {
             Tu pedido fue registrado con el ID: <b>{pedidoId}</b>
           </p>
           <Button className="btn-buscar mt-4 ms-4">
-            <Link className="color-nav" to="/">
+            <Link className="link-hover" to="/">
               Volver a Inicio
             </Link>
           </Button>
@@ -66,7 +69,7 @@ export const Checkout = () => {
             <div>
               <TituloCarrito props="El carrito está vacío." />
               <Button className="btn-buscar mt-4 ms-4">
-                <Link className="color-nav" to="/">
+                <Link className="link-hover" to="/">
                   Volver a Inicio
                 </Link>
               </Button>

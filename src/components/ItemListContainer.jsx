@@ -4,7 +4,8 @@ import { ItemList } from "./ItemList";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase/config";
 import { Loading } from "./Loading";
- 
+import Container from "react-bootstrap/esm/Container";
+
 export const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const { category } = useParams();
@@ -28,14 +29,14 @@ export const ItemListContainer = () => {
   }, [category]);
 
   return (
-    <>
+    <Container>
       {loading ? (
         <Loading />
       ) : (
-        <div className="d-flex flex-wrap justify-content-around">
+        <div className="d-flex flex-wrap justify-content-center mt-4">
           <ItemList items={items} />
         </div>
       )}
-    </>
+    </Container>
   );
 };
