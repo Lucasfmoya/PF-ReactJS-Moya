@@ -20,12 +20,23 @@ export const Checkout = () => {
       setError("Los emails no coinciden, intente de nuevo.");
       return;
     }
+    const { nombre, telefono, email } = data;
+
+    const productosPedido = carrito.map(
+      ({ id, description, price, cantidad }) => ({
+        id,
+        description,
+        price,
+        cantidad,
+      })
+    );
     const pedido = {
-      cliente: data,
-      productos: carrito,
+      buyer: { nombre, telefono, email },
+      productos: productosPedido,
       total: total,
     };
 
+    console.log(pedido);
     const pedidosRef = collection(db, "pedidos");
 
     addDoc(pedidosRef, pedido).then((doc) => {

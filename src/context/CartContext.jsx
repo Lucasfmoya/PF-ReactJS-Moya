@@ -28,7 +28,7 @@ export const CartProvider = ({ children }) => {
       )
     );
   };
-  
+
   const handleRestar = (id) => {
     setCarrito((prevCarrito) =>
       prevCarrito.map((prod) =>
