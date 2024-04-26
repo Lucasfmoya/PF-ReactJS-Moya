@@ -11,7 +11,7 @@ import { db } from "../firebase/config";
 
 export const Checkout = () => {
   const { carrito, vaciarCarrito, total } = useContext(CartContext);
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const [error, setError] = useState("");
   const [pedidoId, setPedidoId] = useState("");
 
@@ -23,23 +23,23 @@ export const Checkout = () => {
     const { nombre, telefono, email } = data;
 
     const productosPedido = carrito.map(
-      ({ id, description, price, cantidad }) => ({
+      ({ id, description, price, quantity }) => ({
         id,
         description,
         price,
-        cantidad,
+        quantity,
+        fecha: new Date().toString(),
       })
     );
-    const pedido = {
+    const order = {
       buyer: { nombre, telefono, email },
-      productos: productosPedido,
+      productos: { ...productosPedido, estado: "generada" },
       total: total,
     };
 
-    console.log(pedido);
-    const pedidosRef = collection(db, "pedidos");
+    const pedidosRef = collection(db, "orders");
 
-    addDoc(pedidosRef, pedido).then((doc) => {
+    addDoc(pedidosRef, order).then((doc) => {
       setPedidoId(doc.id);
       setError("");
       vaciarCarrito();

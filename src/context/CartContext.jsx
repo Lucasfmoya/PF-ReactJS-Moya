@@ -4,7 +4,7 @@ import { agregarAlCarrito } from "../helpers/agregarAlCarrito";
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cantidad, setCantidad] = useState(1);
+  const [quantity, setquantity] = useState(1);
   const [item, setItem] = useState(null);
   const carritoLocalStorage = JSON.parse(localStorage.getItem("carrito")) || [];
   const [total, setTotal] = useState(0);
@@ -22,8 +22,8 @@ export const CartProvider = ({ children }) => {
   const handleSumar = (id) => {
     setCarrito((prevCarrito) =>
       prevCarrito.map((prod) =>
-        prod.id === id && prod.stock >= prod.cantidad + 1
-          ? { ...prod, cantidad: prod.cantidad + 1 }
+        prod.id === id && prod.stock >= prod.quantity + 1
+          ? { ...prod, quantity: prod.quantity + 1 }
           : prod
       )
     );
@@ -32,26 +32,26 @@ export const CartProvider = ({ children }) => {
   const handleRestar = (id) => {
     setCarrito((prevCarrito) =>
       prevCarrito.map((prod) =>
-        prod.id === id && prod.cantidad > 1
-          ? { ...prod, cantidad: prod.cantidad - 1 }
+        prod.id === id && prod.quantity > 1
+          ? { ...prod, quantity: prod.quantity - 1 }
           : prod
       )
     );
   };
 
-  const handleAgregarAlCarrito = (item, cantidad) => {
-    agregarAlCarrito(item, cantidad, carrito, setCarrito);
+  const handleAgregarAlCarrito = (item, quantity) => {
+    agregarAlCarrito(item, quantity, carrito, setCarrito);
   };
 
-  const cantidadEnCarrito = () => {
-    return carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+  const quantityEnCarrito = () => {
+    return carrito.reduce((acc, prod) => acc + prod.quantity, 0);
   };
 
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
   }, [carrito]);
 
-  const mostrarCarrito = cantidadEnCarrito() > 0;
+  const mostrarCarrito = quantityEnCarrito() > 0;
 
   const vaciarCarrito = () => {
     if (setCarrito) {
@@ -66,8 +66,8 @@ export const CartProvider = ({ children }) => {
       value={{
         item,
         setItem,
-        cantidad,
-        setCantidad,
+        quantity,
+        setquantity,
         carrito,
         mostrarCarrito,
         handleSumar,
@@ -75,7 +75,7 @@ export const CartProvider = ({ children }) => {
         total,
         setTotal,
         handleAgregarAlCarrito,
-        cantidadEnCarrito,
+        quantityEnCarrito,
         vaciarCarrito,
       }}
     >

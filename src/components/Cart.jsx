@@ -16,7 +16,7 @@ export const Cart = () => {
 
   useEffect(() => {
     const newTotal = carrito.reduce(
-      (acc, prod) => acc + prod.cantidad * prod.price,
+      (acc, prod) => acc + prod.quantity * prod.price,
       0
     );
     setTotal(newTotal);
@@ -32,7 +32,7 @@ export const Cart = () => {
               <tr>
                 <th>Detalle</th>
                 <th>Producto</th>
-                <th>Cantidad</th>
+                <th>quantity</th>
                 <th>Subtotal</th>
               </tr>
             </thead>
@@ -51,12 +51,12 @@ export const Cart = () => {
                   </td>
                   <td>
                     <ItemCount
-                      cantidad={prod.cantidad}
+                      quantity={prod.quantity}
                       handleRestar={() => handleRestar(prod.id)}
                       handleSumar={() => handleSumar(prod.id)}
                     />
                   </td>
-                  <td>${prod.cantidad * prod.price}</td>
+                  <td>${prod.quantity * prod.price}</td>
                 </tr>
               ))}
             </tbody>

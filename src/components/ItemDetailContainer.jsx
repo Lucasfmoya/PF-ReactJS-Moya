@@ -13,8 +13,8 @@ export const ItemDetailContainer = () => {
   const {
     item,
     setItem,
-    cantidad,
-    setCantidad,
+    quantity,
+    setquantity,
     handleAgregarAlCarrito,
     handleSumar,
     handleRestar,
@@ -25,7 +25,7 @@ export const ItemDetailContainer = () => {
   const id = useParams().id;
 
   useEffect(() => {
-    setCantidad(1);
+    setquantity(1);
     const docRef = doc(db, "productos", id);
     getDoc(docRef).then((res) => {
       setItem({ ...res.data(), id: res.id });
@@ -40,45 +40,47 @@ export const ItemDetailContainer = () => {
         <Loading />
       ) : (
         <>
-        <Container className="d-flex justify-content-center">
-          <Card className="mt-5" style={{ width: "52rem" }}>
-            <div className="d-flex">
-              <div>
-                <Card.Img
-                  className="div-img img-fluid"
-                  variant="top"
-                  src={item.pictureUrl}
-                />
+          <Container className="d-flex justify-content-center">
+            <Card className="mt-5" style={{ width: "52rem" }}>
+              <div className="d-flex">
+                <div>
+                  <Card.Img
+                    className="div-img img-fluid"
+                    variant="top"
+                    src={item.pictureUrl}
+                  />
+                </div>
+                <Card.Body className="">
+                  <Card.Text>{item.category}</Card.Text>
+                  <Card.Title>{item.name}</Card.Title>
+                  <Card.Text>{item.description}</Card.Text>
+                  <Card.Text>
+                    <b>${item.price}</b>
+                  </Card.Text>
+                  <Card.Text>
+                    <span>
+                      Disponible: <b>{item.stock}</b>
+                    </span>
+                  </Card.Text>
+                  <ItemCount
+                    quantity={quantity}
+                    handleRestar={() =>
+                      handleRestar(quantity, setquantity, item)
+                    }
+                    handleSumar={() => handleSumar(quantity, setquantity, item)}
+                  />
+                  <Button
+                    variant="outline-primary"
+                    onClick={() => {
+                      handleAgregarAlCarrito(item, quantity);
+                    }}
+                  >
+                    Agregar al carrito
+                  </Button>
+                </Card.Body>
               </div>
-              <Card.Body className="">
-                <Card.Text>{item.category}</Card.Text>
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text>{item.description}</Card.Text>
-                <Card.Text>
-                  <b>${item.price}</b>
-                </Card.Text>
-                <Card.Text>
-                  <span>
-                    Disponible: <b>{item.stock}</b>
-                  </span>
-                </Card.Text>
-                <ItemCount
-                  cantidad={cantidad}
-                  handleRestar={() => handleRestar(cantidad, setCantidad, item)}
-                  handleSumar={() => handleSumar(cantidad, setCantidad, item)}
-                />
-                <Button
-                  variant="outline-primary"
-                  onClick={() => {
-                    handleAgregarAlCarrito(item, cantidad);
-                  }}
-                >
-                  Agregar al carrito
-                </Button>
-              </Card.Body>
-            </div>
-          </Card>
-        </Container>
+            </Card>
+          </Container>
         </>
       )}
     </>

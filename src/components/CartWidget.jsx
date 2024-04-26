@@ -5,21 +5,16 @@ import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 export const CartWidget = () => {
-  const { cantidadEnCarrito } = useContext(CartContext);
-  const mostrarCarrito = cantidadEnCarrito() > 0;
+  const { quantityEnCarrito } = useContext(CartContext);
 
   return (
-    mostrarCarrito && (
-      <>
-        <div className="icon-carrito mx-4">
-          <Link to="/carrito" >
-            <FontAwesomeIcon icon={faCartShopping} />
-            <span className="translate-middle badge rounded-pill bg-danger">
-              {cantidadEnCarrito()}
-            </span>
-          </Link>
-        </div>
-      </>
-    )
+    <div className="icon-carrito mx-4">
+      <Link to="/carrito">
+        <FontAwesomeIcon icon={faCartShopping} />
+        <span className="translate-middle badge rounded-pill bg-danger">
+          {quantityEnCarrito()}
+        </span>
+      </Link>
+    </div>
   );
 };
