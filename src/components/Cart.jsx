@@ -6,6 +6,8 @@ import Container from "react-bootstrap/esm/Container";
 import { CartContext } from "../context/CartContext";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
+import { mensajeEliminar } from "../helpers/mensajeEliminar";
+import { ToastContainer } from "react-toastify";
 
 export const Cart = () => {
   const { carrito, setCarrito, total, setTotal, vaciarCarrito } =
@@ -15,6 +17,9 @@ export const Cart = () => {
 
   const handleVaciar = () => {
     vaciarCarrito();
+    setTimeout(() => {
+      mensajeEliminar("Carrito vacio");
+    }, 100);
   };
 
   useEffect(() => {
@@ -34,6 +39,7 @@ export const Cart = () => {
   }, [carrito]);
 
   const handleEliminarItem = (itemId) => {
+    mensajeEliminar("Producto quitado del carrito");
     setCarrito((prevCarrito) => {
       const nuevoCarrito = prevCarrito.filter((prod) => prod.id !== itemId);
       return nuevoCarrito;
@@ -88,6 +94,7 @@ export const Cart = () => {
             <Button onClick={handleVaciar} className="btn btn-danger">
               Eliminar carrito
             </Button>
+
             <h3 className="mx-4">Total $ {total}</h3>
             <Button className="btn btn-primary">
               <Link to="/checkout" className="link-blanco">
@@ -95,9 +102,18 @@ export const Cart = () => {
               </Link>
             </Button>
           </div>
+          <ToastContainer role="alert" />
         </div>
       ) : (
-        <p>No hay productos en el carrito.</p>
+        <Container className="d-flex">
+          <p className="mt-2">No hay productos en el carrito.</p>
+          <Link to="/">
+            <Button className="mt-1 mx-4" variant="outline-danger">
+              Volver
+            </Button>
+          </Link>
+          <ToastContainer role="alert" />
+        </Container>
       )}
     </Container>
   );

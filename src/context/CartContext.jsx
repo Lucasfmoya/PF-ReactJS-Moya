@@ -16,7 +16,7 @@ export const CartProvider = ({ children }) => {
     carrito.forEach((prod) => {
       stock[prod.id] = prod.stock;
     });
-    setStockDisponible(stock);  
+    setStockDisponible(stock);
   }, [carrito]);
 
   const handleSumar = () => {
@@ -48,7 +48,6 @@ export const CartProvider = ({ children }) => {
       return null;
     }
   };
-
 
   return (
     <CartContext.Provider

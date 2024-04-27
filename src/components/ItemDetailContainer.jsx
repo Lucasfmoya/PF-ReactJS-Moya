@@ -8,6 +8,8 @@ import Card from "react-bootstrap/Card";
 import { ItemQuantitySelector } from "./ItemQuantitySelector";
 import { CartContext } from "../context/CartContext";
 import { Loading } from "./Loading";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const ItemDetailContainer = () => {
   const {
@@ -79,6 +81,7 @@ export const ItemDetailContainer = () => {
                     >
                       Agregar al carrito
                     </Button>
+
                     <Link to="/">
                       <Button className="ms-3" variant="outline-danger">
                         Volver
@@ -88,6 +91,7 @@ export const ItemDetailContainer = () => {
                 </Card.Body>
               </div>
             </Card>
+            <ToastContainer role="alert" />
           </Container>
         </>
       )}
