@@ -21,7 +21,6 @@ function App() {
           <Route path="/category/:category" element={<ItemListContainer />} />
           <Route path="/item/:id" element={<ItemDetailContainer />} />
           <Route path="/checkout" element={<Checkout />} />
-          <Route path="/agregarproductos" element={<AgregarProd />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
