@@ -1,5 +1,5 @@
 import { useEffect, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { doc, getDoc } from "firebase/firestore";
@@ -34,7 +34,7 @@ export const ItemDetailContainer = () => {
   }, []);
 
   if (!item) return null;
-  
+
   return (
     <>
       {loading ? (
@@ -70,14 +70,21 @@ export const ItemDetailContainer = () => {
                     }
                     handleSumar={() => handleSumar(quantity, setquantity, item)}
                   />
-                  <Button
-                    variant="outline-primary"
-                    onClick={() => {
-                      handleAgregarAlCarrito(item, quantity);
-                    }}
-                  >
-                    Agregar al carrito
-                  </Button>
+                  <div>
+                    <Button
+                      variant="outline-primary"
+                      onClick={() => {
+                        handleAgregarAlCarrito(item, quantity);
+                      }}
+                    >
+                      Agregar al carrito
+                    </Button>
+                    <Link to="/">
+                      <Button className="ms-3" variant="outline-danger">
+                        Volver
+                      </Button>
+                    </Link>
+                  </div>
                 </Card.Body>
               </div>
             </Card>
