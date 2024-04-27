@@ -12,11 +12,11 @@ export const ItemListContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const productosRef = collection(db, "productos");
+    const itemRef = collection(db, "items");
 
     const q = category
-      ? query(productosRef, where("category", "==", category))
-      : productosRef;
+      ? query(itemRef, where("category", "==", category))
+      : itemRef;
 
     getDocs(q).then((res) => {
       setItems(

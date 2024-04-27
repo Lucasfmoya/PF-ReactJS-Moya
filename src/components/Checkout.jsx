@@ -8,7 +8,6 @@ import { TituloCarrito } from "./TituloCarrito";
 import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
-import { AgregarProd } from "../helpers/AgregarProd";
 
 export const Checkout = () => {
   const { carrito, vaciarCarrito, total } = useContext(CartContext);
@@ -21,9 +20,9 @@ export const Checkout = () => {
       setError("Los emails no coinciden, intente de nuevo.");
       return;
     }
-    const { nombre, telefono, email } = data;
+    const { nombre, phone, email } = data;
 
-    const productosPedido = carrito.map(
+    const sendOrder = carrito.map(
       ({ id, description, name, price, quantity, stock }) => ({
         id,
         name,
@@ -36,17 +35,18 @@ export const Checkout = () => {
     );
 
     const order = {
-      buyer: { nombre, telefono, email },
-      productos: { ...productosPedido, estado: "generada" },
+      buyer: { nombre, phone, email },
+      productos: { ...sendOrder, estado: "generada" },
       total: total,
     };
-    const pedidosRef = collection(db, "orders");
+    const itemRef = collection(db, "items");
 
-    addDoc(pedidosRef, order).then((doc) => {
+    addDoc(itemRef, order).then((doc) => {
       setPedidoId(doc.id);
       setError("");
       vaciarCarrito();
     });
+    console.log(order);
   };
 
   return (
@@ -94,7 +94,7 @@ export const Checkout = () => {
                       placeholder="Ingrese su teléfono"
                       size="sm"
                       required
-                      {...register("telefono")}
+                      {...register("phone")}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="email">

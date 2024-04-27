@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import Card from "react-bootstrap/Card";
-import { ItemCount } from "./ItemCount";
+import { ItemQuantitySelector } from "./ItemQuantitySelector";
 import { CartContext } from "../context/CartContext";
 import { Loading } from "./Loading";
 
@@ -26,7 +26,7 @@ export const ItemDetailContainer = () => {
 
   useEffect(() => {
     setquantity(1);
-    const docRef = doc(db, "productos", id);
+    const docRef = doc(db, "items", id);
     getDoc(docRef).then((res) => {
       setItem({ ...res.data(), id: res.id });
       setLoading(false);
@@ -34,6 +34,7 @@ export const ItemDetailContainer = () => {
   }, []);
 
   if (!item) return null;
+  
   return (
     <>
       {loading ? (
@@ -62,7 +63,7 @@ export const ItemDetailContainer = () => {
                       Disponible: <b>{item.stock}</b>
                     </span>
                   </Card.Text>
-                  <ItemCount
+                  <ItemQuantitySelector
                     quantity={quantity}
                     handleRestar={() =>
                       handleRestar(quantity, setquantity, item)

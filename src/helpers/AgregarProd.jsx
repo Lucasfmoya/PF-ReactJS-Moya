@@ -15,7 +15,7 @@ export const AgregarProd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const docRef = await addDoc(collection(db, "productos"), {
+    const docRef = await addDoc(collection(db, "items"), {
       name,
       category,
       description,

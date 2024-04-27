@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Button from "react-bootstrap/esm/Button";
 import { CartContext } from "../context/CartContext";
 
-export const ItemCount = ({ quantity, handleRestar, handleSumar }) => {
+export const ItemQuantitySelector = ({ quantity, handleRestar, handleSumar }) => {
   const { item } = useContext(CartContext);
 
   if (!item) return null;

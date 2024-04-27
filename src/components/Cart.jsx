@@ -4,7 +4,7 @@ import Container from "react-bootstrap/esm/Container";
 import { CartContext } from "../context/CartContext";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
-import { ItemCount } from "./ItemCount";
+import { ItemQuantitySelector } from "./ItemQuantitySelector";
 
 export const Cart = () => {
   const { carrito, handleRestar, handleSumar, total, setTotal, vaciarCarrito } =
@@ -19,10 +19,9 @@ export const Cart = () => {
       (acc, prod) => acc + prod.quantity * prod.price,
       0
     );
+
     setTotal(newTotal);
   }, [carrito]);
-
-  console.log(carrito);
   return (
     <Container>
       <h1>Carrito</h1>
@@ -51,7 +50,7 @@ export const Cart = () => {
                     ></img>
                   </td>
                   <td>
-                    <ItemCount
+                    <ItemQuantitySelector
                       quantity={prod.quantity}
                       handleRestar={() => handleRestar(prod.id)}
                       handleSumar={() => handleSumar(prod.id)}
