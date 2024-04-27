@@ -39,7 +39,7 @@ export const Checkout = () => {
       productos: { ...sendOrder, estado: "generada" },
       total: total,
     };
-    const itemRef = collection(db, "items");
+    const itemRef = collection(db, "orders");
 
     addDoc(itemRef, order).then((doc) => {
       setPedidoId(doc.id);

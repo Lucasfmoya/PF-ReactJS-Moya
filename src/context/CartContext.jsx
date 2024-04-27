@@ -16,27 +16,15 @@ export const CartProvider = ({ children }) => {
     carrito.forEach((prod) => {
       stock[prod.id] = prod.stock;
     });
-    setStockDisponible(stock);
+    setStockDisponible(stock);  
   }, [carrito]);
 
-  const handleSumar = (id) => {
-    setCarrito((prevCarrito) =>
-      prevCarrito.map((prod) =>
-        prod.id === id && prod.stock >= prod.quantity + 1
-          ? { ...prod, quantity: prod.quantity + 1 }
-          : prod
-      )
-    );
+  const handleSumar = () => {
+    quantity < item.stock && setquantity(quantity + 1);
   };
 
-  const handleRestar = (id) => {
-    setCarrito((prevCarrito) =>
-      prevCarrito.map((prod) =>
-        prod.id === id && prod.quantity > 1
-          ? { ...prod, quantity: prod.quantity - 1 }
-          : prod
-      )
-    );
+  const handleRestar = () => {
+    quantity > 1 && setquantity(quantity - 1);
   };
 
   const handleAgregarAlCarrito = (item, quantity) => {
@@ -61,6 +49,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
+
   return (
     <CartContext.Provider
       value={{
@@ -69,6 +58,7 @@ export const CartProvider = ({ children }) => {
         quantity,
         setquantity,
         carrito,
+        setCarrito,
         mostrarCarrito,
         handleSumar,
         handleRestar,

@@ -6,7 +6,6 @@ import { CartContext } from "../context/CartContext";
 
 export const CartWidget = () => {
   const { quantityEnCarrito } = useContext(CartContext);
-
   return (
     <div className="icon-carrito mx-4">
       <Link to="/carrito">
