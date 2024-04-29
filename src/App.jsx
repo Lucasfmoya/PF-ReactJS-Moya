@@ -6,7 +6,6 @@ import { ItemListContainer } from "./components/ItemListContainer";
 import { ItemDetailContainer } from "./components/ItemDetailContainer";
 import { PageNotFound } from "./components/PageNotFound";
 import { Cart } from "./components/Cart";
-import { AgregarProd } from "./helpers/AgregarProd";
 import { CartProvider } from "./context/CartContext";
 import { Checkout } from "./components/Checkout";
 
