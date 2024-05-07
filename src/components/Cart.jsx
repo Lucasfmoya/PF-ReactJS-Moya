@@ -3,7 +3,7 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../contexts/CartContext";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import { mensajeEliminar } from "../helpers/mensajeEliminar";

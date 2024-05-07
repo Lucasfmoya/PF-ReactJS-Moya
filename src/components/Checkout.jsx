@@ -3,7 +3,7 @@ import Form from "react-bootstrap/esm/Form";
 import Button from "react-bootstrap/esm/Button";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../contexts/CartContext";
 import { TituloCarrito } from "./TituloCarrito";
 import { Link } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";

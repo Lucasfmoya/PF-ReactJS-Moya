@@ -6,7 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase/config";
 import Card from "react-bootstrap/Card";
 import { ItemQuantitySelector } from "./ItemQuantitySelector";
-import { CartContext } from "../context/CartContext";
+import { CartContext } from "../contexts/CartContext";
 import { Loading } from "./Loading";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
